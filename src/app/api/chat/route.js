@@ -1,20 +1,21 @@
 import { NextResponse } from 'next/server'
 
 export async function POST(req) {
-  const body = await req.json()
+  const { prompt } = await req.json()
 
-  const response = await fetch('http://localhost:11434/api/chat', {
+  const apiKey = process.env.GEMINI_API_KEY
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`
+
+  const response = await fetch(url, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      model: 'llama3:8b',
-      messages: body.messages,
-      stream: false,
-    }),
+      contents: [{ parts: [{ text: prompt }] }]
+    })
   })
 
   const result = await response.json()
-  const message = result.message?.content || 'No response.'
+  const text = result?.candidates?.[0]?.content?.parts?.[0]?.text || 'No response'
 
-  return NextResponse.json({ message })
+  return NextResponse.json({ message: text })
 }
