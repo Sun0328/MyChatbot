@@ -1,9 +1,7 @@
 'use client'
-import { useState } from 'react'
 import Header from '../components/Header'
 import ChatArea from '../components/ChatArea'
 import ChatInput from '../components/ChatInput'
-import { PaperAirplaneIcon, PaperClipIcon, FaceSmileIcon } from '@heroicons/react/24/solid'
 
 export default function Home() {
   return (

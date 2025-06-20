@@ -14,7 +14,7 @@ export default function ChatArea() {
         <div key={index}>
           <div className="text-right">
               <strong>You:</strong>
-              <div>{userMsg}</div>
+              <div className='text-gray-800'>{userMsg}</div>
           </div>
           {responses[index] && (
             <div className="text-left border-1 rounded-lg p-2 mt-2 bg-gray-100">
