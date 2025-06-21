@@ -55,7 +55,7 @@ export default function ChatInput() {
   }
 
   return (
-    <form className="px-4 py-4 bg-white flex gap-2 rounded-2xl">
+    <form className="px-4 py-4 bg-white flex gap-2 rounded-b-2xl">
       <Input
         value={input}
         onChange={(e) => setInput(e.target.value)}

@@ -1,9 +1,9 @@
 import { create } from 'zustand'
 
-export const useChatStore = create((set) => ({
+export const useJobStore = create((set) => ({
   input: '',
   userMessages: [],
-  responses:['👋 Hi, I am your chatbot assistant. How can I help you today?'],
+  responses:['👋 I’m your job tracker assistant. Paste the job post url, and I’ll help you extract important info from job listings.'],
   isLoading: false,
 
   setInput: (val) => set({ input: val }),

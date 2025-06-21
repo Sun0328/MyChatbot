@@ -127,3 +127,7 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.clickable-btn {
+  @apply px-6 py-3 bg-violet-600 text-white rounded-lg hover:bg-violet-800 transition-colors;
+}
