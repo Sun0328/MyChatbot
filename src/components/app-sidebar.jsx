@@ -1,6 +1,6 @@
 'use client'
 import * as React from "react"
-import { MessageSquare, Briefcase, Settings, LogOut, User, ChevronLeft } from "lucide-react"
+import { MessageSquare, Briefcase, Settings, LogOut, User, ChartCandlestick } from "lucide-react"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
 import { toast } from "sonner"
@@ -34,6 +34,11 @@ const data = {
           title: "Job Tracker Bot",
           url: "/jobtracker",
           icon: Briefcase,
+        },
+        {
+          title: "US Stock Analysis Bot",
+          url: "/stock",
+          icon: ChartCandlestick,
         },
       ],
     },
@@ -83,13 +88,14 @@ export function AppSidebar({
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader className="flex flex-row items-center justify-between">
-        <div className="flex items-center gap-2 group-data-[collapsible=icon]:hidden">
-          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-sm">F</span>
-          </div>
-          <span className="font-semibold">Trained Bots</span>
-        </div>
-        <SidebarTrigger className="h-8 w-8 group-data-[collapsible=icon]:mx-auto" />
+        <a href="/" className="flex items-center gap-2 group-data-[collapsible=icon]:hidden **:hover:cursor-pointer hover:text-gray-500">
+            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+              <span className="text-primary-foreground font-bold text-sm">F</span>
+            </div>
+            <span className="font-semibold">Trained Bots</span>
+        </a>
+
+        <SidebarTrigger className="h-8 w-8 group-data-[collapsible=icon]:mx-auto cursor-pointer"/>
       </SidebarHeader>
       <SidebarContent>
         {/* We create a SidebarGroup for each parent. */}

@@ -20,6 +20,12 @@ export default function Home() {
         >
           Job Tracker Bot
         </a>
+        <a 
+          href="/stock" 
+          className="clickable-btn"
+        >
+          US Stock Bot
+        </a>
       </div>
     </div>
   )

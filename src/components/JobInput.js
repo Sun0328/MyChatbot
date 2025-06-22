@@ -23,7 +23,7 @@ export default function JobInput() {
 
     // Validate URL format first
     if (!checkUrlFormat(input)) {
-      toast.error("Please check if the URL is valid.")
+      toast.error("Please paste the url only.")
       return
     }
 
@@ -38,7 +38,7 @@ export default function JobInput() {
     setUserMessages(newUserMessages)
     setInput('')
     setLoading(true)
-    setResponses([...responses, 'Analyzing...'])
+    setResponses([...responses, 'Researching...'])
 
     try {
       console.log('Sending job URL:', input);
@@ -57,9 +57,9 @@ export default function JobInput() {
       const data = await res.json();
       const result = data.message || '⚠️ No response.';
 
-      console.log('Job API response received');
       const formattedResult = await cleanJsonData(result);
       setResponses([...responses, formattedResult]);
+
     } catch (error) {
       toast.error(`Error: ${error.message}`);
       setResponses([...responses, `⚠️ Error: ${error.message}`]);

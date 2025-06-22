@@ -1,6 +1,6 @@
 // Synchronous URL format validation
 export function checkUrlFormat(url) {
-  const regex = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+  const regex = /^https:\/\/www\./;
   return regex.test(url);
 }
 

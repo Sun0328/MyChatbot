@@ -22,8 +22,10 @@ export async function POST(req) {
       }
       const scrapeData = await scrapeRes.json()
       scrapedContent = scrapeData.content || ''
+
       console.log('Scraped content length:', scrapedContent.length);
-      console.log('Scraped content:', scrapedContent);
+      // console.log('Scraped content:', scrapedContent);
+
     } catch (error) {
       console.error('Scraper error:', error);
       return NextResponse.json({ error: 'Failed to scrape job content', details: error.message }, { status: 500 })

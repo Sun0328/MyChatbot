@@ -3,15 +3,22 @@ import checkUrlValid from './checkurlvalid'
 export default async function cleanJsonData(jsonString) {
 
   try {
-    // If input is a string, try to parse as JSON
-    let jsonObj;
+        let jsonObj;
+    let cleanString = '';
+
     if (typeof jsonString === 'string') {
       // Remove possible "json\n" prefix
-      let cleanString = jsonString.replace(/^json\n/, '').trim();
-      
+      cleanString = jsonString.replace(/^json\n/, '').trim();
+
       // Remove Markdown code block format (```json ... ```)
       cleanString = cleanString.replace(/^```json\s*/, '').replace(/\s*```$/, '');
-      
+
+      // Early return if not likely to be JSON (e.g., plain message string)
+      if (!cleanString.trim().startsWith('{')) {
+        // It’s not a JSON, just return as plain markdown block
+        return `> ${cleanString.trim()}`;
+      }
+
       jsonObj = JSON.parse(cleanString);
     } else {
       jsonObj = jsonString;
